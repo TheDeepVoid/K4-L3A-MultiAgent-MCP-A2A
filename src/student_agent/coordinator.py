@@ -184,7 +184,7 @@ class Coordinator:
             result = await asyncio.wait_for(
                 agent(message, self.gateway, self.trace), timeout=timeout
             )
-        except TimeoutError:
+        except (TimeoutError, asyncio.TimeoutError):
             result = HandoffMessage(
                 case_id=message.case_id,
                 sender=role,
