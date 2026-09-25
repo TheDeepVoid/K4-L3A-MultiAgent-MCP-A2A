@@ -426,3 +426,27 @@ Trạng thái hiện tại: `day09 run` dừng ngay tại stub agent `order` v�
 `NotImplementedError` kèm hướng dẫn — không emits output giả. Khi task kế tiếp
 hoàn tất agents và policy/verifier, `solve_case` sẽ chạy end-to-end mà không
 cần đổi giao diện coordinator.
+
+### 8.3 Domain grounding (Olist)
+
+Dữ liệu tham khảo cục bộ: `/home/aminix/.cache/kagglehub/datasets/olistbr/brazilian-ecommerce/versions/2`
+(Cảnh báo: chỉ là tham khảo nghiệp vụ để hiểu ý nghĩa field; dữ liệu có thẩm
+quyền để kết luận là MCP Evidence Gateway, không phải CSV cục bộ.)
+
+Các đặc trưng đã kiểm chứng bằng script trên toàn bộ dataset:
+
+| Đặc trưng | Giá trị kiểm chứng | Ý nghĩa cho intent/domain |
+| --- | --- | --- |
+| `order_status` enum | delivered 96k, shipped 1.1k, invoiced 314, processing 301, unavailable 609, canceled 625, created 5, approved 2 | `canceled` và `unavailable` là status riêng biệt, tương ứng topic `canceled_order_paid` / `unavailable_order_paid`. Không có status "delay" — late delivery tính bằng so sánh `order_delivered_customer_date` vs `order_estimated_delivery_date` (8.11% delivered bị trễ). |
+| Canceled orders | 625 order, **100% có payment rows**, 74% có item rows | `canceled_order_paid`: payment đã capture; câu hỏi là tiền có được hoàn không → cần domain order + payment (timeline/refund). |
+| Unavailable orders | 609 order, **100% có payment rows**, chỉ 6 order có item rows | `unavailable_order_paid` khác biệt với canceled: product không khả dụng, payment đã capture → cần order + payment. |
+| `payment_sequential` | 1..29, ~3k order có >1 payment row | Split payment là hợp lệ (topic `valid_split_payment`); nhiều sequential cùng order ≠ duplicate. |
+| `payment_type`, installments | credit_card/boleto/voucher/debit_card/not_defined; installments 0..24 | `payment_mismatch`/`duplicate_charge` phải đối chiếu tổng payment_value theo từng payment row, không theo lời khai. |
+| Refund data | Không có bảng refund trong dataset công khai | Evidence refund chỉ có qua MCP (`get_refund_timeline`); coordinator không bao giờ suy ra tiền hoàn từ CSV. |
+| Sellers / order | ~1.3k order có ≥2 sellers (tối đa 5) | `responsible_parties` phải scoped theo seller/item; không quy trách nhiệm cho toàn order khi có nhiều seller. |
+| Items / order | ~9.8k order có >1 item, mỗi item có `price` + `freight_value` | `recommended_refund_brl` theo item/seller, không double-count. |
+| Milestone vận chuyển | `order_delivered_carrier_date` (bàn giao carrier = xong phần seller) vs `order_delivered_customer_date` (xong phần logistics) | Phân biệt `late_delivery_seller` vs `late_delivery_logistics`: nếu carrier_date gần/đúng hạn nhưng customer_date trễ → trách nhiệm logistics. |
+
+Các bước phân tích ở mục 8.1 (TOPIC_DOMAINS, TOPIC_HYPOTHESIS) được thiết kế
+theo đúng các đặc trưng trên. Khi task kế tiếp triển khai agents, ánh xạ tool
+→ field dữ liệu nên dựa trên bảng này.
