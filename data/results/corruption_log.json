@@ -1,0 +1,10 @@
+{
+  "logs": [
+    "Dropped 4 latest records: ['10.1145/3637528.3671812', '10.1145/3637528.3671808', '10.1145/3637528.3671804', '10.1145/3637528.3671807']",
+    "Blanked summary for paper_id 10.1145/3637528.3671824",
+    "Injected noise to paper_id 10.1145/3637528.3671802",
+    "Truncated title for paper_id 10.1145/3637528.3671823",
+    "Made date stale for paper_id 10.1145/3637528.3671822",
+    "Duplicated paper_id 10.1145/3637528.3671821"
+  ]
+}

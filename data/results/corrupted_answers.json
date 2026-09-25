@@ -1,0 +1,292 @@
+[
+  {
+    "id": "eval_001",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Static benchmarks fail to capture domain drift in enterprise knowledge bases.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ],
+    "answer": "",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671824",
+      "10.1145/3637528.3671817",
+      "10.1145/3637528.3671805",
+      "10.1145/3637528.3671822"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\nAuthors: Quang Le, Yen Vu\nPublished: 2026-06-12\nCategories: Evaluation Methodology, Enterprise Systems\nSummary: ",
+      "Title: Advanced Perspectives on Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-06-05\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions Further analysis on scaling parameters.",
+      "Title: Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-03-28\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: Evaluating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions.",
+      "Title: Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2025-06-10\nCategories: Data Quality, DevOps\nSummary: An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 2,
+      "correct": false,
+      "reasoning": "The model answer does not provide a comprehensive summary of the paper and only mentions one aspect (static benchmarks) without addressing the main focus of continuous benchmark evaluation or the implications for enterprise retrieval pipelines."
+    }
+  },
+  {
+    "id": "eval_002",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Multi-Agent Consensus for High-Stakes Fact Verification'?",
+    "ground_truth": "A single LLM is susceptible to confirmation bias when evaluating retrieved evidence.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ],
+    "answer": "An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence.",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671820",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671801",
+      "10.1145/3637528.3671816"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Multi-Agent Consensus for High-Stakes Fact Verification\nAuthors: Phong Vu, Ngan Hoang\nPublished: 2026-06-08\nCategories: Multi-Agent Systems, Artificial Intelligence\nSummary: An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-05-20\nCategories: Artificial Intelligence, Information Retrieval\nSummary: Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.",
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.7857142857142857,
+    "judge": {
+      "score": 3,
+      "correct": false,
+      "reasoning": "The model answer adds the term 'extended empirical study' which is not present in the reference answer, altering the meaning. While both answers address the susceptibility of a single LLM to confirmation bias, the model answer does not accurately summarize the paper as it introduces additional context that may not be correct."
+    }
+  },
+  {
+    "id": "eval_003",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "We define freshness service-level agreements (SLAs) for temporal document ingestion.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ],
+    "answer": "An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion.",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671816",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671801",
+      "10.1145/3637528.3671802"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-05-20\nCategories: Artificial Intelligence, Information Retrieval\nSummary: Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.",
+      "Title: Data Observability and Quality Gates for Production RAG Systems\nAuthors: Anh Tran, Quoc Pham\nPublished: 2026-06-12\nCategories: Software Engineering, Data Systems\nSummary: Silent data corruption in RAG pipelines degrades LLM answer faithfulness without throwing runtime errors. We introduce automated quality gates using Great Expectations 1.x to catch stale and malformed embeddings before serving. %%%R\u00c1C_V\u00d4_NGH\u0128A_123%%% "
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.7200000000000001,
+    "judge": {
+      "score": 3,
+      "correct": false,
+      "reasoning": "The model answer includes the concept of freshness SLAs and temporal document ingestion, which aligns with the reference answer. However, it adds 'an extended empirical study on' which is not mentioned in the reference answer, making it less accurate."
+    }
+  },
+  {
+    "id": "eval_004",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Quang Le, Yen Vu",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ],
+    "answer": "",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671824",
+      "10.1145/3637528.3671817",
+      "10.1145/3637528.3671822",
+      "10.1145/3637528.3671810"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\nAuthors: Quang Le, Yen Vu\nPublished: 2026-06-12\nCategories: Evaluation Methodology, Enterprise Systems\nSummary: ",
+      "Title: Advanced Perspectives on Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-06-05\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2025-06-10\nCategories: Data Quality, DevOps\nSummary: An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters.",
+      "Title: Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2026-06-08\nCategories: Data Quality, DevOps\nSummary: Embedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 5,
+      "correct": true,
+      "reasoning": "The model answer correctly identifies the authors of the paper as Quang Le and Yen Vu, matching the reference answer exactly."
+    }
+  },
+  {
+    "id": "eval_005",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Multi-Agent Consensus for High-Stakes Fact Verification'?",
+    "ground_truth": "Phong Vu, Ngan Hoang",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ],
+    "answer": "An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence.",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671820",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671801",
+      "10.1145/3637528.3671816"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Multi-Agent Consensus for High-Stakes Fact Verification\nAuthors: Phong Vu, Ngan Hoang\nPublished: 2026-06-08\nCategories: Multi-Agent Systems, Artificial Intelligence\nSummary: An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-05-20\nCategories: Artificial Intelligence, Information Retrieval\nSummary: Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.",
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer does not address the question about the authors of the paper and instead discusses a different topic related to LLMs and confirmation bias."
+    }
+  },
+  {
+    "id": "eval_006",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "Bao Do, Linh Ngo",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ],
+    "answer": "An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion.",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671816",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671801",
+      "10.1145/3637528.3671820"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-05-20\nCategories: Artificial Intelligence, Information Retrieval\nSummary: Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.",
+      "Title: Advanced Perspectives on Multi-Agent Consensus for High-Stakes Fact Verification\nAuthors: Phong Vu, Ngan Hoang\nPublished: 2026-06-08\nCategories: Multi-Agent Systems, Artificial Intelligence\nSummary: An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer does not provide the names of the authors, which is the specific information requested in the question. Instead, it discusses the content of the paper without addressing the authors."
+    }
+  },
+  {
+    "id": "eval_007",
+    "question_type": "date",
+    "question": "When was the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines' published?",
+    "ground_truth": "2026-07-22",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ],
+    "answer": "2026-06-12",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671824",
+      "10.1145/3637528.3671822",
+      "10.1145/3637528.3671817",
+      "10.1145/3637528.3671810"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\nAuthors: Quang Le, Yen Vu\nPublished: 2026-06-12\nCategories: Evaluation Methodology, Enterprise Systems\nSummary: ",
+      "Title: Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2025-06-10\nCategories: Data Quality, DevOps\nSummary: An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-06-05\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions Further analysis on scaling parameters.",
+      "Title: Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2026-06-08\nCategories: Data Quality, DevOps\nSummary: Embedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 2,
+      "correct": false,
+      "reasoning": "The model answer is incorrect as it provides a different publication date (2026-06-12) compared to the reference answer (2026-07-22). The model answer is close but not materially correct."
+    }
+  },
+  {
+    "id": "eval_008",
+    "question_type": "date",
+    "question": "When was the paper 'Multi-Agent Consensus for High-Stakes Fact Verification' published?",
+    "ground_truth": "2026-07-19",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ],
+    "answer": "2026-06-08",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671820",
+      "10.1145/3637528.3671816",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671822"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Multi-Agent Consensus for High-Stakes Fact Verification\nAuthors: Phong Vu, Ngan Hoang\nPublished: 2026-06-08\nCategories: Multi-Agent Systems, Artificial Intelligence\nSummary: An extended empirical study on single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2025-06-10\nCategories: Data Quality, DevOps\nSummary: An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer is incorrect as it provides a date (2026-06-08) that is not the same as the reference answer (2026-07-19). The model answer is earlier than the reference date."
+    }
+  },
+  {
+    "id": "eval_009",
+    "question_type": "categories",
+    "question": "What are the categories of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "Data Management, Artificial Intelligence",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ],
+    "answer": "An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion.",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671816",
+      "10.1145/3637528.3671813",
+      "10.1145/3637528.3671806",
+      "10.1145/3637528.3671818"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation\nAuthors: Bao Do, Linh Ngo\nPublished: 2026-06-04\nCategories: Data Management, Artificial Intelligence\nSummary: An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.",
+      "Title: Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks\nAuthors: Minh Nguyen, Hoang Le\nPublished: 2026-06-01\nCategories: Artificial Intelligence, Information Retrieval\nSummary: An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.",
+      "Title: Semantic Layer Integration for Agentic Text-to-SQL Pipelines\nAuthors: Huy Dinh, Trang Vo\nPublished: 2026-05-02\nCategories: Databases, Information Systems\nSummary: Connecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy.",
+      "Title: Advanced Perspectives on Semantic Layer Integration for Agentic Text-to-SQL Pipelines\nAuthors: Huy Dinh, Trang Vo\nPublished: 2026-06-06\nCategories: Databases, Information Systems\nSummary: An extended empirical study on onnecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 1,
+      "correct": false,
+      "reasoning": "The model answer does not provide the categories of the paper as requested. Instead, it describes a study related to freshness SLAs without mentioning the specific categories of Data Management and Artificial Intelligence."
+    }
+  },
+  {
+    "id": "eval_010",
+    "question_type": "categories",
+    "question": "What are the categories of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Evaluation Methodology, Enterprise Systems",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ],
+    "answer": "",
+    "retrieved_doc_ids": [
+      "10.1145/3637528.3671824",
+      "10.1145/3637528.3671817",
+      "10.1145/3637528.3671805",
+      "10.1145/3637528.3671822"
+    ],
+    "retrieved_contexts": [
+      "Title: Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines\nAuthors: Quang Le, Yen Vu\nPublished: 2026-06-12\nCategories: Evaluation Methodology, Enterprise Systems\nSummary: ",
+      "Title: Advanced Perspectives on Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-06-05\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions Further analysis on scaling parameters.",
+      "Title: Evaluating Retrieval Precision with Token F1 and LLM Judges\nAuthors: Tuan Phan, Mai Bui\nPublished: 2026-03-28\nCategories: Natural Language Processing, Evaluation Methodology\nSummary: Evaluating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions.",
+      "Title: Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD\nAuthors: Son Nguyen, Thuy Doan\nPublished: 2025-06-10\nCategories: Data Quality, DevOps\nSummary: An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters."
+    ],
+    "retrieval_hit": false,
+    "token_f1": 0.0,
+    "judge": {
+      "score": 5,
+      "correct": true,
+      "reasoning": "The model answer correctly identifies the categories of the paper as 'Evaluation Methodology' and 'Enterprise Systems', which matches the reference answer exactly."
+    }
+  }
+]

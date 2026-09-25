@@ -1,0 +1,92 @@
+[
+  {
+    "id": "eval_001",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Static benchmarks fail to capture domain drift in enterprise knowledge bases.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ]
+  },
+  {
+    "id": "eval_002",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Multi-Agent Consensus for High-Stakes Fact Verification'?",
+    "ground_truth": "A single LLM is susceptible to confirmation bias when evaluating retrieved evidence.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ]
+  },
+  {
+    "id": "eval_003",
+    "question_type": "summary",
+    "question": "What is the summary of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "We define freshness service-level agreements (SLAs) for temporal document ingestion.",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ]
+  },
+  {
+    "id": "eval_004",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Quang Le, Yen Vu",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ]
+  },
+  {
+    "id": "eval_005",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Multi-Agent Consensus for High-Stakes Fact Verification'?",
+    "ground_truth": "Phong Vu, Ngan Hoang",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ]
+  },
+  {
+    "id": "eval_006",
+    "question_type": "authors",
+    "question": "Who are the authors of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "Bao Do, Linh Ngo",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ]
+  },
+  {
+    "id": "eval_007",
+    "question_type": "date",
+    "question": "When was the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines' published?",
+    "ground_truth": "2026-07-22",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ]
+  },
+  {
+    "id": "eval_008",
+    "question_type": "date",
+    "question": "When was the paper 'Multi-Agent Consensus for High-Stakes Fact Verification' published?",
+    "ground_truth": "2026-07-19",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671808"
+    ]
+  },
+  {
+    "id": "eval_009",
+    "question_type": "categories",
+    "question": "What are the categories of the paper 'Freshness SLAs for Real-Time LLM Knowledge Augmentation'?",
+    "ground_truth": "Data Management, Artificial Intelligence",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671804"
+    ]
+  },
+  {
+    "id": "eval_010",
+    "question_type": "categories",
+    "question": "What are the categories of the paper 'Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines'?",
+    "ground_truth": "Evaluation Methodology, Enterprise Systems",
+    "ground_truth_doc_ids": [
+      "10.1145/3637528.3671812"
+    ]
+  }
+]

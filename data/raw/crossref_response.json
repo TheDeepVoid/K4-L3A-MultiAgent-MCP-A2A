@@ -1,0 +1,826 @@
+{
+  "status": "ok",
+  "message-type": "work-list",
+  "message-version": "1.0.0",
+  "message": {
+    "total-results": 24,
+    "items": [
+      {
+        "DOI": "10.1145/3637528.3671801",
+        "title": [
+          "Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks"
+        ],
+        "abstract": "<jats:p>Retrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices.</jats:p>",
+        "author": [
+          {
+            "given": "Minh",
+            "family": "Nguyen"
+          },
+          {
+            "given": "Hoang",
+            "family": "Le"
+          }
+        ],
+        "subject": [
+          "Artificial Intelligence",
+          "Information Retrieval"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              5,
+              20
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-05-20T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671801"
+      },
+      {
+        "DOI": "10.1145/3637528.3671802",
+        "title": [
+          "Data Observability and Quality Gates for Production RAG Systems"
+        ],
+        "abstract": "<jats:p>Silent data corruption in RAG pipelines degrades LLM answer faithfulness without throwing runtime errors. We introduce automated quality gates using Great Expectations 1.x to catch stale and malformed embeddings before serving.</jats:p>",
+        "author": [
+          {
+            "given": "Anh",
+            "family": "Tran"
+          },
+          {
+            "given": "Quoc",
+            "family": "Pham"
+          }
+        ],
+        "subject": [
+          "Software Engineering",
+          "Data Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              12
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-12T14:30:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671802"
+      },
+      {
+        "DOI": "10.1145/3637528.3671803",
+        "title": [
+          "Mitigating Ghost Vectors in Dense Retrieval via Idempotent Indexing"
+        ],
+        "abstract": "<jats:p>Soft-deletions in vector databases leave orphaned embeddings that lead to hallucinations. This paper designs an idempotent index synchronization protocol that guarantees complete purges of outdated vector artifacts.</jats:p>",
+        "author": [
+          {
+            "given": "Duc",
+            "family": "Vu"
+          },
+          {
+            "given": "Thao",
+            "family": "Dang"
+          }
+        ],
+        "subject": [
+          "Databases",
+          "Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              4,
+              18
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-04-18T09:15:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671803"
+      },
+      {
+        "DOI": "10.1145/3637528.3671804",
+        "title": [
+          "Freshness SLAs for Real-Time LLM Knowledge Augmentation"
+        ],
+        "abstract": "<jats:p>We define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora.</jats:p>",
+        "author": [
+          {
+            "given": "Bao",
+            "family": "Do"
+          },
+          {
+            "given": "Linh",
+            "family": "Ngo"
+          }
+        ],
+        "subject": [
+          "Data Management",
+          "Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              7,
+              5
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-07-05T16:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671804"
+      },
+      {
+        "DOI": "10.1145/3637528.3671805",
+        "title": [
+          "Evaluating Retrieval Precision with Token F1 and LLM Judges"
+        ],
+        "abstract": "<jats:p>Evaluating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions.</jats:p>",
+        "author": [
+          {
+            "given": "Tuan",
+            "family": "Phan"
+          },
+          {
+            "given": "Mai",
+            "family": "Bui"
+          }
+        ],
+        "subject": [
+          "Natural Language Processing",
+          "Evaluation Methodology"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              3,
+              28
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-03-28T11:45:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671805"
+      },
+      {
+        "DOI": "10.1145/3637528.3671806",
+        "title": [
+          "Semantic Layer Integration for Agentic Text-to-SQL Pipelines"
+        ],
+        "abstract": "<jats:p>Connecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy.</jats:p>",
+        "author": [
+          {
+            "given": "Huy",
+            "family": "Dinh"
+          },
+          {
+            "given": "Trang",
+            "family": "Vo"
+          }
+        ],
+        "subject": [
+          "Databases",
+          "Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              5,
+              2
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-05-02T13:20:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671806"
+      },
+      {
+        "DOI": "10.1145/3637528.3671807",
+        "title": [
+          "Synthetic Corruption Testing: Stress-Testing Vector Search Robustness"
+        ],
+        "abstract": "<jats:p>We introduce an automated fuzzing suite that corrupts text chunks by injecting noise, truncating titles, and blanking summaries. Experiments reveal critical failure thresholds for dense embedding retrieval.</jats:p>",
+        "author": [
+          {
+            "given": "Kien",
+            "family": "Duong"
+          },
+          {
+            "given": "Vy",
+            "family": "Ly"
+          }
+        ],
+        "subject": [
+          "Robustness",
+          "Information Retrieval"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              25
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-25T15:10:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671807"
+      },
+      {
+        "DOI": "10.1145/3637528.3671808",
+        "title": [
+          "Multi-Agent Consensus for High-Stakes Fact Verification"
+        ],
+        "abstract": "<jats:p>A single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations.</jats:p>",
+        "author": [
+          {
+            "given": "Phong",
+            "family": "Vu"
+          },
+          {
+            "given": "Ngan",
+            "family": "Hoang"
+          }
+        ],
+        "subject": [
+          "Multi-Agent Systems",
+          "Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              7,
+              19
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-07-19T08:50:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671808"
+      },
+      {
+        "DOI": "10.1145/3637528.3671809",
+        "title": [
+          "Chunking Strategies for Technical Documentation Retrieval"
+        ],
+        "abstract": "<jats:p>Hierarchical and semantic boundary chunking preserves code block contexts and markdown headings. Our benchmark demonstrates superior top-1 recall compared to fixed character length sliding windows.</jats:p>",
+        "author": [
+          {
+            "given": "Long",
+            "family": "Trinh"
+          },
+          {
+            "given": "Ha",
+            "family": "Chu"
+          }
+        ],
+        "subject": [
+          "Information Retrieval",
+          "Natural Language Processing"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              4,
+              30
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-04-30T17:05:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671809"
+      },
+      {
+        "DOI": "10.1145/3637528.3671810",
+        "title": [
+          "Automated Data Quality Profiling with Great Expectations in CI/CD"
+        ],
+        "abstract": "<jats:p>Embedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model.</jats:p>",
+        "author": [
+          {
+            "given": "Son",
+            "family": "Nguyen"
+          },
+          {
+            "given": "Thuy",
+            "family": "Doan"
+          }
+        ],
+        "subject": [
+          "Data Quality",
+          "DevOps"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              8
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-08T12:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671810"
+      },
+      {
+        "DOI": "10.1145/3637528.3671811",
+        "title": [
+          "Hybrid Search Architectures: Combining BM25 with Dense Representations"
+        ],
+        "abstract": "<jats:p>Dense vector search excels at conceptual similarity but struggles with exact acronyms and serial numbers. Reciprocal Rank Fusion of sparse lexical scores and dense embeddings achieves optimal recall.</jats:p>",
+        "author": [
+          {
+            "given": "Dat",
+            "family": "Tran"
+          },
+          {
+            "given": "Lan",
+            "family": "Pham"
+          }
+        ],
+        "subject": [
+          "Information Retrieval",
+          "Algorithms"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              5,
+              14
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-05-14T09:30:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671811"
+      },
+      {
+        "DOI": "10.1145/3637528.3671812",
+        "title": [
+          "Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines"
+        ],
+        "abstract": "<jats:p>Static benchmarks fail to capture domain drift in enterprise knowledge bases. We establish a synthetic test generator that auto-creates paired evaluation sets whenever new corpora are ingested.</jats:p>",
+        "author": [
+          {
+            "given": "Quang",
+            "family": "Le"
+          },
+          {
+            "given": "Yen",
+            "family": "Vu"
+          }
+        ],
+        "subject": [
+          "Evaluation Methodology",
+          "Enterprise Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              7,
+              22
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-07-22T14:15:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671812"
+      },
+      {
+        "DOI": "10.1145/3637528.3671813",
+        "title": [
+          "Advanced Perspectives on Agentic Retrieval-Augmented Generation for Knowledge-Intensive Tasks"
+        ],
+        "abstract": "<jats:p>An extended empirical study on etrieval-Augmented Generation (RAG) significantly improves large language model accuracy by grounding responses in retrieved passages. We explore agentic multi-hop reasoning and routing across heterogeneous vector indices Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Minh",
+            "family": "Nguyen"
+          },
+          {
+            "given": "Hoang",
+            "family": "Le"
+          }
+        ],
+        "subject": [
+          "Artificial Intelligence",
+          "Information Retrieval"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              1
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-01T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671813"
+      },
+      {
+        "DOI": "10.1145/3637528.3671814",
+        "title": [
+          "Advanced Perspectives on Data Observability and Quality Gates for Production RAG Systems"
+        ],
+        "abstract": "<jats:p>An extended empirical study on ilent data corruption in RAG pipelines degrades LLM answer faithfulness without throwing runtime errors. We introduce automated quality gates using Great Expectations 1.x to catch stale and malformed embeddings before serving Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Anh",
+            "family": "Tran"
+          },
+          {
+            "given": "Quoc",
+            "family": "Pham"
+          }
+        ],
+        "subject": [
+          "Software Engineering",
+          "Data Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              2
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-02T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671814"
+      },
+      {
+        "DOI": "10.1145/3637528.3671815",
+        "title": [
+          "Advanced Perspectives on Mitigating Ghost Vectors in Dense Retrieval via Idempotent Indexing"
+        ],
+        "abstract": "<jats:p>An extended empirical study on oft-deletions in vector databases leave orphaned embeddings that lead to hallucinations. This paper designs an idempotent index synchronization protocol that guarantees complete purges of outdated vector artifacts Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Duc",
+            "family": "Vu"
+          },
+          {
+            "given": "Thao",
+            "family": "Dang"
+          }
+        ],
+        "subject": [
+          "Databases",
+          "Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              3
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-03T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671815"
+      },
+      {
+        "DOI": "10.1145/3637528.3671816",
+        "title": [
+          "Advanced Perspectives on Freshness SLAs for Real-Time LLM Knowledge Augmentation"
+        ],
+        "abstract": "<jats:p>An extended empirical study on e define freshness service-level agreements (SLAs) for temporal document ingestion. By tracking document age and update cadence, our orchestrator dynamically prioritizes recrawling high-churn technical corpora Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Bao",
+            "family": "Do"
+          },
+          {
+            "given": "Linh",
+            "family": "Ngo"
+          }
+        ],
+        "subject": [
+          "Data Management",
+          "Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              4
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-04T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671816"
+      },
+      {
+        "DOI": "10.1145/3637528.3671817",
+        "title": [
+          "Advanced Perspectives on Evaluating Retrieval Precision with Token F1 and LLM Judges"
+        ],
+        "abstract": "<jats:p>An extended empirical study on valuating open-domain QA requires robust metrics. We benchmark semantic similarity, token-level overlap F1, and model-based judge verdicts to quantify RAG answer correctness across noisy corpus conditions Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Tuan",
+            "family": "Phan"
+          },
+          {
+            "given": "Mai",
+            "family": "Bui"
+          }
+        ],
+        "subject": [
+          "Natural Language Processing",
+          "Evaluation Methodology"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              5
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-05T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671817"
+      },
+      {
+        "DOI": "10.1145/3637528.3671818",
+        "title": [
+          "Advanced Perspectives on Semantic Layer Integration for Agentic Text-to-SQL Pipelines"
+        ],
+        "abstract": "<jats:p>An extended empirical study on onnecting LLMs directly to raw warehouse tables often results in schema misunderstandings. A governed semantic layer standardizes business metric definitions, dramatically boosting SQL generation accuracy Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Huy",
+            "family": "Dinh"
+          },
+          {
+            "given": "Trang",
+            "family": "Vo"
+          }
+        ],
+        "subject": [
+          "Databases",
+          "Information Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              6
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-06T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671818"
+      },
+      {
+        "DOI": "10.1145/3637528.3671819",
+        "title": [
+          "Advanced Perspectives on Synthetic Corruption Testing: Stress-Testing Vector Search Robustness"
+        ],
+        "abstract": "<jats:p>An extended empirical study on e introduce an automated fuzzing suite that corrupts text chunks by injecting noise, truncating titles, and blanking summaries. Experiments reveal critical failure thresholds for dense embedding retrieval Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Kien",
+            "family": "Duong"
+          },
+          {
+            "given": "Vy",
+            "family": "Ly"
+          }
+        ],
+        "subject": [
+          "Robustness",
+          "Information Retrieval"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              7
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-07T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671819"
+      },
+      {
+        "DOI": "10.1145/3637528.3671820",
+        "title": [
+          "Advanced Perspectives on Multi-Agent Consensus for High-Stakes Fact Verification"
+        ],
+        "abstract": "<jats:p>An extended empirical study on  single LLM is susceptible to confirmation bias when evaluating retrieved evidence. We demonstrate a multi-agent debate architecture where specialized verifier agents critique and corroborate citations Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Phong",
+            "family": "Vu"
+          },
+          {
+            "given": "Ngan",
+            "family": "Hoang"
+          }
+        ],
+        "subject": [
+          "Multi-Agent Systems",
+          "Artificial Intelligence"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              8
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-08T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671820"
+      },
+      {
+        "DOI": "10.1145/3637528.3671821",
+        "title": [
+          "Advanced Perspectives on Chunking Strategies for Technical Documentation Retrieval"
+        ],
+        "abstract": "<jats:p>An extended empirical study on ierarchical and semantic boundary chunking preserves code block contexts and markdown headings. Our benchmark demonstrates superior top-1 recall compared to fixed character length sliding windows Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Long",
+            "family": "Trinh"
+          },
+          {
+            "given": "Ha",
+            "family": "Chu"
+          }
+        ],
+        "subject": [
+          "Information Retrieval",
+          "Natural Language Processing"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              9
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-09T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671821"
+      },
+      {
+        "DOI": "10.1145/3637528.3671822",
+        "title": [
+          "Advanced Perspectives on Automated Data Quality Profiling with Great Expectations in CI/CD"
+        ],
+        "abstract": "<jats:p>An extended empirical study on mbedding quality checks directly into data pipelines enables fail-closed governance. We show how Great Expectations suites catch schema drifts and null fields before documents reach the embedding model Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Son",
+            "family": "Nguyen"
+          },
+          {
+            "given": "Thuy",
+            "family": "Doan"
+          }
+        ],
+        "subject": [
+          "Data Quality",
+          "DevOps"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              10
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-10T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671822"
+      },
+      {
+        "DOI": "10.1145/3637528.3671823",
+        "title": [
+          "Advanced Perspectives on Hybrid Search Architectures: Combining BM25 with Dense Representations"
+        ],
+        "abstract": "<jats:p>An extended empirical study on ense vector search excels at conceptual similarity but struggles with exact acronyms and serial numbers. Reciprocal Rank Fusion of sparse lexical scores and dense embeddings achieves optimal recall Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Dat",
+            "family": "Tran"
+          },
+          {
+            "given": "Lan",
+            "family": "Pham"
+          }
+        ],
+        "subject": [
+          "Information Retrieval",
+          "Algorithms"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              11
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-11T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671823"
+      },
+      {
+        "DOI": "10.1145/3637528.3671824",
+        "title": [
+          "Advanced Perspectives on Continuous Benchmark Evaluation for Enterprise Retrieval Pipelines"
+        ],
+        "abstract": "<jats:p>An extended empirical study on tatic benchmarks fail to capture domain drift in enterprise knowledge bases. We establish a synthetic test generator that auto-creates paired evaluation sets whenever new corpora are ingested Further analysis on scaling parameters.</jats:p>",
+        "author": [
+          {
+            "given": "Quang",
+            "family": "Le"
+          },
+          {
+            "given": "Yen",
+            "family": "Vu"
+          }
+        ],
+        "subject": [
+          "Evaluation Methodology",
+          "Enterprise Systems"
+        ],
+        "published": {
+          "date-parts": [
+            [
+              2026,
+              6,
+              12
+            ]
+          ]
+        },
+        "created": {
+          "date-time": "2026-06-12T10:00:00Z"
+        },
+        "URL": "https://doi.org/10.1145/3637528.3671824"
+      }
+    ]
+  }
+}
