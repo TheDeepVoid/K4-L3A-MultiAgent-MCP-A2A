@@ -171,10 +171,25 @@ Mỗi lần giao hoặc chuyển nhiệm vụ sử dụng message gồm:
 - task_assigned: Coordinator giao nhiệm vụ.
 - handoff: agent chuyển kết quả hoặc yêu cầu cho agent khác.
 - Ghi actor, target và case_id đúng với hành động thực tế.
-- Chỉ ghi sự kiện quan sát được và decision code;
-  không ghi suy luận riêng.
+- Chỉ ghi sự kiện quan sát được và decision code; không ghi suy luận riêng.
 
 Các quy tắc trên là thiết kế dự kiến, cần được triển khai trong workflow.
+
+### Ánh xạ input đã quan sát
+
+Với cấu trúc của L3A_CASE_001:
+
+- case_id lấy từ case["case_id"].
+- Đơn cần bắt đầu xác minh lấy từ case["customer_request"]["claimed_order_id"].
+- Claims lấy từ case["customer_request"]["claims"].
+- policy_version lấy từ case["policy_version"].
+- opened_at là thời điểm mở case, không phải thời điểm hiện tại.
+
+Coordinator kiểm tra sự tồn tại và kiểu dữ liệu của các trường trước khi giao nhiệm vụ. Cấu trúc này mới được quan sát trên một case, cần kiểm tra các input còn lại trước khi coi là quy tắc chung.
+
+claimed_order_id là định danh khách hàng cung cấp để truy vấn; Order/item phải xác minh bằng MCP trước khi dùng dữ liệu đơn làm căn cứ kết luận.
+
+topic trong claims không tự động trở thành primary_issue. Yêu cầu requested_full_refund không tự động dẫn đến hoàn toàn bộ tiền. Kết luận phải dựa trên evidence thanh toán, trạng thái đơn và policy. Giữ nguyên claim_id khi tạo claim_assessments.
 
 ## 4. Evidence lifecycle
 
@@ -263,6 +278,18 @@ Mô tả cách validate MCP response, lưu `evidence_ref`, map evidence vào cla
 - Không ghi API key, header xác thực hoặc nguyên văn lỗi chứa bí mật.
 
 Đây là chính sách dự kiến, chưa phải retry đã được triển khai.
+
+### Lỗi thực thi tool không rõ nguyên nhân
+
+Đã quan sát get_refund_timeline trả lỗi: "Error executing tool get_refund_timeline".
+
+- Phân loại là lỗi thực thi chưa rõ nguyên nhân.
+- Không chuyển lỗi thành kết quả rỗng hoặc kết luận chưa hoàn tiền.
+- Không tạo evidence_ref cho lần gọi thất bại.
+- Không emit tool_result_consumed cho phản hồi lỗi này.
+- Payment báo needs_more_evidence cho Coordinator.
+- Khi workflow thực sự chuyển báo cáo lỗi, dùng handoff với decision_code = MCP_TOOL_EXECUTION_FAILED.
+- Chỉ retry tự động sau khi xác định lỗi thuộc nhóm tạm thời.
 
 ## 6. Verification invariants
 
