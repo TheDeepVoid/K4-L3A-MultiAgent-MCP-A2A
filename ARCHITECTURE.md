@@ -4,8 +4,6 @@ Team phải cập nhật tài liệu này cùng source. Mục tiêu là mô tả
 
 ## 1. System overview
 
-Vẽ hoặc mô tả luồng từ `inputs/<case_id>.json` đến MCP calls, specialist agents, verifier, output và trace.
-
 Hệ thống dự kiến sử dụng Python async state-machine. Mỗi agent là một hàm có trách nhiệm, input và output riêng. Coordinator quản lý luồng xử lý trong solve_case(case, gateway, trace).
 
 ```text
@@ -62,7 +60,33 @@ Verifier
 - Message A2A và state nội bộ không được đưa nguyên vào public output.
 - Chỉ finalize sau khi Verifier chấp nhận output cuối cùng.
 
-Đây là kiến trúc dự kiến, chưa phản ánh workflow đã triển khai.
+### Trạng thái triển khai
+
+Đã triển khai:
+
+- Message A2A trong `a2a.py`.
+- State riêng theo case và kiểm tra quyền/phạm vi tool trong `state.py`.
+- EvidenceCollector với giới hạn concurrency, deadline và retry cho TimeoutError trực tiếp trong `evidence.py`.
+- Ghi nhận sử dụng evidence và message handoff trong `observability.py`.
+- Order/Item Agent xác minh định danh và trạng thái đơn trong `order_agent.py`.
+- Luồng Coordinator giao việc và nhận kết quả Order/Item trong `coordinator.py`.
+- `workflow.solve_case()` nối Coordinator với Policy và Verifier, tạo public output
+    từ facts đã có evidence và chỉ trả sau khi kiểm tra nội bộ đạt.
+
+Đã kiểm tra bằng Gateway giả lập và TraceWriter thật:
+
+- Coordinator ghi `task_assigned`.
+- Order/Item ghi `tool_result_consumed`.
+- Kết quả được chuyển về Coordinator bằng `handoff`.
+- Ba sự kiện đúng thứ tự và vượt qua public trace schema.
+
+Giới hạn hiện tại:
+
+- Order/Item Agent mới xác minh order status; truy vấn item/seller là phần mở rộng tiếp theo.
+- Verifier hiện kiểm tra field set, case/entity scope, evidence linkage và tổng refund;
+    CLI tiếp tục là lớp validate JSON Schema cuối cùng.
+- Chưa tự động thực hiện vòng rework sau `NEEDS_REWORK`; workflow dừng với lỗi thay vì
+    tạo fallback evidence hoặc kết luận không có căn cứ.
 
 ## 2. Agent ownership
 
@@ -74,8 +98,6 @@ Verifier
 | Shipment | Nhiệm vụ kiểm tra vận chuyển | Xác minh trạng thái và các mốc giao hàng | Facts vận chuyển và evidence_refs cho Policy |
 | Policy | Kết quả specialist và bằng chứng chính sách | Áp dụng chính sách, đề xuất kết luận, trách nhiệm và phương án xử lý | Output dự thảo cho Verifier |
 | Verifier | Output dự thảo và bằng chứng đã thu thập | Kiểm tra schema, phạm vi entity, liên kết bằng chứng và tính nhất quán nghiệp vụ | Kết quả kiểm tra cho Coordinator: đạt hoặc yêu cầu bổ sung cụ thể |
-
-Nêu rõ actor nào được quyền gọi tool nào. Tránh cho mọi agent quyền truy vấn tất cả tool nếu không cần thiết.
 
 ### Quyền gọi tool
 
@@ -125,8 +147,6 @@ Tất cả arguments trên có kiểu string.
 
 ## 3. A2A protocol
 
-Mô tả message envelope, correlation theo `case_id`, điều kiện handoff, timeout và cách tránh vòng lặp. Chỉ trace sự kiện/decision code quan sát được; không trace nội dung suy luận riêng.
-
 ### Message nội bộ
 
 Mỗi lần giao hoặc chuyển nhiệm vụ sử dụng message gồm:
@@ -173,7 +193,20 @@ Mỗi lần giao hoặc chuyển nhiệm vụ sử dụng message gồm:
 - Ghi actor, target và case_id đúng với hành động thực tế.
 - Chỉ ghi sự kiện quan sát được và decision code; không ghi suy luận riêng.
 
-Các quy tắc trên là thiết kế dự kiến, cần được triển khai trong workflow.
+### Trách nhiệm ghi trace
+
+- CLI ghi `case_received` trước khi gọi `solve_case()`.
+- Coordinator ghi `task_assigned` khi giao nhiệm vụ.
+- Agent gửi ghi `handoff` khi chuyển kết quả hoặc yêu cầu.
+- Agent sử dụng bằng chứng ghi `tool_result_consumed`.
+- Policy ghi `policy_decided` khi hoàn thành quyết định dự thảo.
+- Verifier ghi `verification_completed` khi hoàn thành kiểm tra.
+- CLI ghi `case_finalized` sau khi `solve_case()` trả kết quả, output vượt qua kiểm tra của CLI và được ghi ra file.
+- Workflow không ghi trùng `case_received` hoặc `case_finalized`.
+- `solve_case()` chỉ trả output cuối cùng sau khi Verifier chấp nhận.
+- Khi không thể tạo output hợp lệ và có căn cứ, workflow báo lỗi; không tạo sự kiện `case_finalized` giả.
+
+CLI đã ghi hai sự kiện đầu/cuối; phần phân công trong workflow là thiết kế dự kiến, cần được triển khai.
 
 ### Ánh xạ input đã quan sát
 
@@ -192,8 +225,6 @@ claimed_order_id là định danh khách hàng cung cấp để truy vấn; Orde
 topic trong claims không tự động trở thành primary_issue. Yêu cầu requested_full_refund không tự động dẫn đến hoàn toàn bộ tiền. Kết luận phải dựa trên evidence thanh toán, trạng thái đơn và policy. Giữ nguyên claim_id khi tạo claim_assessments.
 
 ## 4. Evidence lifecycle
-
-Mô tả cách validate MCP response, lưu `evidence_ref`, map evidence vào claim/output và emit `tool_result_consumed`. Evidence không được tái sử dụng giữa các case.
 
 ### 1. Thu thập
 
@@ -277,7 +308,9 @@ Mô tả cách validate MCP response, lưu `evidence_ref`, map evidence vào cla
 - Có thể ghi số lần thử bằng attributes với giá trị đơn.
 - Không ghi API key, header xác thực hoặc nguyên văn lỗi chứa bí mật.
 
-Đây là chính sách dự kiến, chưa phải retry đã được triển khai.
+EvidenceCollector đã triển khai retry cho TimeoutError trực tiếp: tối đa 3 lần gọi, backoff 1 và 2 giây, tuân theo deadline case. Lỗi tool chung không được tự động retry.
+
+Chưa xử lý phân loại timeout nằm trong ExceptionGroup hoặc các loại lỗi tạm thời khác. Phần điều phối fallback và vòng bổ sung vẫn cần triển khai.
 
 ### Lỗi thực thi tool không rõ nguyên nhân
 
@@ -292,8 +325,6 @@ Mô tả cách validate MCP response, lưu `evidence_ref`, map evidence vào cla
 - Chỉ retry tự động sau khi xác định lỗi thuộc nhóm tạm thời.
 
 ## 6. Verification invariants
-
-Liệt kê kiểm tra trước finalize: schema, entity scope, evidence ownership, claim linkage, money totals, responsibility/action consistency và confidence bounds.
 
 Verifier kiểm tra các điều kiện sau trước khi cho phép finalize.
 
@@ -350,9 +381,11 @@ Verifier kiểm tra các điều kiện sau trước khi cho phép finalize.
 - Nếu không đạt: emit verification_completed với decision_code = NEEDS_REWORK và trả danh sách lỗi cụ thể qua message nội bộ cho Coordinator.
 - Coordinator chỉ giao bổ sung nếu còn ngân sách vòng và thời gian.
 - Sau mọi chỉnh sửa, output phải được kiểm tra lại.
-- Chỉ emit case_finalized khi output cuối cùng đã vượt qua verification.
+- CLI chỉ emit `case_finalized` sau khi output đã vượt qua verification, kiểm tra của CLI và được ghi ra file.
 
-Đây là thiết kế dự kiến. Kiểm tra schema đã có bộ hỗ trợ; các kiểm tra nghiệp vụ cần được triển khai thêm.
+Workflow đã triển khai các invariant nghiệp vụ cục bộ nêu trên. `Contracts.validate_output()`
+ở CLI vẫn được giữ làm cổng kiểm tra public contract cuối cùng; không sửa schema để hợp thức
+hóa output.
 
 ## 7. Reproducibility
 
@@ -412,6 +445,8 @@ Không đưa `.env`, API key, source hoặc input vào ZIP nộp bài.
 
 ### Thông tin đã xác nhận
 
+- `day09 validate-inputs` đã thành công với 100 case L3A.
+- `case_set_version` hiện tại là `l3a-competition-v1`.
 - Tên và arguments của 10 tool đã được xác nhận qua MCP discovery, xem mục 2.
 - Việc xác nhận metadata chưa đồng nghĩa đã triển khai phân quyền tool hoặc kiểm tra cấu trúc dữ liệu trả về.
 
@@ -419,5 +454,5 @@ Không đưa `.env`, API key, source hoặc input vào ZIP nộp bài.
 
 - Phiên bản Python và dependency thực tế.
 - Model/config thực tế nếu sử dụng LLM.
-- Commit source và `case_set_version` của lần chạy.
+- Commit source và xác nhận lại `case_set_version` của lần chạy nộp bài.
 - Kết quả chạy validation và các giới hạn còn tồn tại.
