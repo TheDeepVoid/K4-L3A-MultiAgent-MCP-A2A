@@ -63,6 +63,7 @@ Verifier
 - Chỉ finalize sau khi Verifier chấp nhận output cuối cùng.
 
 Đây là kiến trúc dự kiến, chưa phản ánh workflow đã triển khai.
+Trạng thái triển khai thực tế theo từng phần được ghi tại mục 8.
 
 ## 2. Agent ownership
 
@@ -394,3 +395,34 @@ Không đưa `.env`, API key, source hoặc input vào ZIP nộp bài.
 - Model/config thực tế nếu sử dụng LLM.
 - Commit source và `case_set_version` của lần chạy.
 - Kết quả chạy validation và các giới hạn còn tồn tại.
+## 8. Trạng thái triển khai
+
+Tài liệu này được cập nhật cùng source. Mục này ghi phần nào của kiến trúc đã
+được triển khai, phần nào còn ở trạng thái dự kiến, để các thành viên nối tiếp
+có điểm xuất phát minh bạch.
+
+### 8.1 Đã triển khai — Coordinator / Supervisor (Nguyễn Hải Đăng, TheDeepVoid)
+
+| Thành phần | File | Ghi chú |
+| --- | --- | --- |
+| Intent analysis | `src/student_agent/intent.py` | Phân tích deterministic, không MCP, không LLM. Trích `case_id`, `claimed_order_id`, `policy_version`, claims; ánh xạ topic → hypothesis primary_issue; topic → các specialist domain cần thiết (`TOPIC_DOMAINS`, `TOPIC_HYPOTHESIS`). Topic lạ được báo trong `unknown_topics`, không crash. |
+| A2A message envelope | `src/student_agent/messages.py` | `HandoffMessage` theo mục 3 (case_id, sender, recipient, task, entity_scope, facts, evidence_refs, status). Mở rộng nội bộ: `policy_version` (từ input, không đoán) và `output` (draft của policy dành cho verifier) — không đưa vào public output/trace. |
+| Phân quyền tool | `src/student_agent/permissions.py` | Hằng số allowlist theo mục 2 cho coordinator/order/payment/shipment/policy/verifier; `assert_tool_allowed()`; `get_customer_history` không cấp cho ai. Việc *thực thi* trong agent thuộc task kế tiếp. |
+| Agent registry + stubs | `src/student_agent/agents.py` | `SpecialistAgent` protocol, `AgentRegistry`, `build_default_registry()` với stub ném `NotImplementedError` kèm thông báo rõ ràng — không bịa facts/evidence_ref. |
+| Coordinator loop | `src/student_agent/coordinator.py` | `Coordinator.run()`: phân tích intent → plan task theo domain → dispatch qua registry (concurrency tối đa 2, per-task timeout tối đa 30s, deadline toàn bộ 180s) → synthesize facts/evidence → handoff cho policy → verifier → tối đa 1 vòng bổ sung (SPECIALIST_REWORK) → trả output. Hết budget/ngân sách → báo lỗi xử lý case, không tạo kết quả giả. |
+| Trace handoff | `src/student_agent/coordinator.py` | Emit `task_assigned`, `handoff`, `policy_decided`, `verification_completed` (PASS/NEEDS_REWORK). CLI giữ `case_received`/`case_finalized`; agent emit `tool_result_consumed`. |
+| Điểm vào | `src/student_agent/workflow.py` | `solve_case()` tạo Coordinator với default registry. |
+
+### 8.2 Chưa triển khai — task kế tiếp
+
+| Thành phần | Trạng thái |
+| --- | --- |
+| Order/item, payment, shipment agents | Stub trong `agents.py`; cần triển khai theo `SpecialistAgent` protocol: gọi MCP qua `EvidenceGateway`, kiểm tra allowlist, emit `tool_result_consumed`, trả facts + evidence_refs thật. |
+| Tích hợp MCP Evidence Gateway | Có sẵn `EvidenceGateway.call()`; agents cần gọi đúng tool đã discovery, đúng case_id, không tự tạo evidence_ref. |
+| Policy agent (biz logic) | Stub; cần áp dụng `get_policy` với `policy_version` từ input (coordinator truyền qua `message.policy_version`), tạo draft theo `l3a-output-v2.schema.json`. |
+| Verifier (biz invariants) | Stub; cần kiểm tra mục 6 (schema, entity scope, evidence ownership, claim linkage, tài chính, confidence). |
+
+Trạng thái hiện tại: `day09 run` dừng ngay tại stub agent `order` với
+`NotImplementedError` kèm hướng dẫn — không emits output giả. Khi task kế tiếp
+hoàn tất agents và policy/verifier, `solve_case` sẽ chạy end-to-end mà không
+cần đổi giao diện coordinator.
