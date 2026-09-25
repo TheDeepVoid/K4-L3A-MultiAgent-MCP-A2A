@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Literal
 
-
 Actor = Literal[
     "coordinator",
     "order-item-agent",

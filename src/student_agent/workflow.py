@@ -8,9 +8,10 @@ from .coordinator import investigate_order
 from .evidence import EvidenceCollector
 from .mcp_gateway import EvidenceGateway
 from .observability import record_message
-from .policy_agent import inspect_policy
+from .policy_agent import build_policy_output, inspect_policy
 from .state import CaseState
 from .trace import TraceWriter
+from .verifier import assert_valid
 
 PRIMARY_ISSUES = {
     "canceled_order_paid", "unavailable_order_paid", "late_delivery_seller",
@@ -137,7 +138,7 @@ async def solve_case(
     record_message(state, trace, policy_assignment)
     policy_result = await inspect_policy(state, collector, trace)
     record_message(state, trace, policy_result)
-    output = _build_output(case, state)
+    output = build_policy_output(case, state)
     trace.emit(
         case_id=state.case_id, event_type="policy_decided", actor="policy-agent",
         decision_code=output["assessment"]["primary_issue"],
@@ -151,7 +152,7 @@ async def solve_case(
         status="pending",
     )
     record_message(state, trace, verifier_assignment)
-    _verify_output(output, state)
+    assert_valid(output, state, case)
     trace.contracts.validate_output(output, "workflow output")
     trace.emit(
         case_id=state.case_id, event_type="verification_completed", actor="verifier",

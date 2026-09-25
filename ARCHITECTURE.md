@@ -468,25 +468,25 @@ có điểm xuất phát minh bạch.
 | --- | --- | --- |
 | Intent analysis | `src/student_agent/intent.py` | Phân tích deterministic, không MCP, không LLM. Trích `case_id`, `claimed_order_id`, `policy_version`, claims; ánh xạ topic → hypothesis primary_issue; topic → các specialist domain cần thiết (`TOPIC_DOMAINS`, `TOPIC_HYPOTHESIS`). Topic lạ được báo trong `unknown_topics`, không crash. |
 | A2A message envelope | `src/student_agent/messages.py` | `HandoffMessage` theo mục 3 (case_id, sender, recipient, task, entity_scope, facts, evidence_refs, status). Mở rộng nội bộ: `policy_version` (từ input, không đoán) và `output` (draft của policy dành cho verifier) — không đưa vào public output/trace. |
-| Phân quyền tool | `src/student_agent/permissions.py` | Hằng số allowlist theo mục 2 cho coordinator/order/payment/shipment/policy/verifier; `assert_tool_allowed()`; `get_customer_history` không cấp cho ai. Việc *thực thi* trong agent thuộc task kế tiếp. |
-| Agent registry + stubs | `src/student_agent/agents.py` | `SpecialistAgent` protocol, `AgentRegistry`, `build_default_registry()` với stub ném `NotImplementedError` kèm thông báo rõ ràng — không bịa facts/evidence_ref. |
+| Phân quyền tool | `src/student_agent/permissions.py` | Hằng số allowlist theo mục 2 cho coordinator/order/payment/shipment/policy/verifier; `assert_tool_allowed()`; `get_customer_history` không cấp cho ai. Specialist kiểm tra allowlist trước mỗi call. |
+| Agent registry + MCP specialists | `src/student_agent/agents.py` | `SpecialistAgent` protocol, `AgentRegistry`, và MCP-backed order/payment/shipment agents; policy/verifier vẫn fail-closed cho tới phase kế tiếp. |
 | Coordinator loop | `src/student_agent/coordinator.py` | `Coordinator.run()`: phân tích intent → plan task theo domain → dispatch qua registry (concurrency tối đa 2, per-task timeout tối đa 30s, deadline toàn bộ 180s) → synthesize facts/evidence → handoff cho policy → verifier → tối đa 1 vòng bổ sung (SPECIALIST_REWORK) → trả output. Hết budget/ngân sách → báo lỗi xử lý case, không tạo kết quả giả. |
 | Trace handoff | `src/student_agent/coordinator.py` | Emit `task_assigned`, `handoff`, `policy_decided`, `verification_completed` (PASS/NEEDS_REWORK). CLI giữ `case_received`/`case_finalized`; agent emit `tool_result_consumed`. |
 | Điểm vào | `src/student_agent/workflow.py` | `solve_case()` tạo Coordinator với default registry. |
 
-### 8.2 Chưa triển khai — task kế tiếp
+### 8.2 Trạng thái Pha 3 và task kế tiếp
 
 | Thành phần | Trạng thái |
 | --- | --- |
-| Order/item, payment, shipment agents | Stub trong `agents.py`; cần triển khai theo `SpecialistAgent` protocol: gọi MCP qua `EvidenceGateway`, kiểm tra allowlist, emit `tool_result_consumed`, trả facts + evidence_refs thật. |
-| Tích hợp MCP Evidence Gateway | Có sẵn `EvidenceGateway.call()`; agents cần gọi đúng tool đã discovery, đúng case_id, không tự tạo evidence_ref. |
-| Policy agent (biz logic) | Stub; cần áp dụng `get_policy` với `policy_version` từ input (coordinator truyền qua `message.policy_version`), tạo draft theo `l3a-output-v2.schema.json`. |
-| Verifier (biz invariants) | Stub; cần kiểm tra mục 6 (schema, entity scope, evidence ownership, claim linkage, tài chính, confidence). |
+| Order/item, payment, shipment agents | Đã triển khai trong `agents.py`: gọi tool có trong discovery và allowlist, truyền nguyên `case_id` + `order_id`, emit `tool_result_consumed`, trả facts cùng evidence_refs thật. |
+| Tích hợp MCP Evidence Gateway | Đã dùng `EvidenceGateway.call()`; envelope được Gateway validate, agent không tự tạo/sửa `evidence_ref`. Lỗi MCP không được biến thành evidence giả. |
+| Policy agent (biz logic) | Đã triển khai trong `policy_agent.py`: validate policy envelope, chọn primary issue, responsible parties, refund lines và resolution action từ policy evidence. Confidence được giới hạn tối đa 0.95. |
+| Verifier (biz invariants) | Đã triển khai trong `verifier.py`: kiểm tra schema fields, case/evidence scope, claim linkage, party compatibility, refund arithmetic, duplicate lines và confidence calibration. |
 
-Trạng thái hiện tại: `day09 run` dừng ngay tại stub agent `order` với
-`NotImplementedError` kèm hướng dẫn — không emits output giả. Khi task kế tiếp
-hoàn tất agents và policy/verifier, `solve_case` sẽ chạy end-to-end mà không
-cần đổi giao diện coordinator.
+Trạng thái hiện tại: specialist agents đã chạy tới MCP Gateway, còn `solve_case()` đã
+nối policy decision và verifier trước khi emit `verification_completed=PASS`. Test fake
+Gateway, policy calibration và cross-field rejection đã được bổ sung; chưa chạy live
+MCP vì cần endpoint và Team API Key hợp lệ.
 
 ### 8.3 Domain grounding (Olist)
 
@@ -509,5 +509,5 @@ Các đặc trưng đã kiểm chứng bằng script trên toàn bộ dataset:
 | Milestone vận chuyển | `order_delivered_carrier_date` (bàn giao carrier = xong phần seller) vs `order_delivered_customer_date` (xong phần logistics) | Phân biệt `late_delivery_seller` vs `late_delivery_logistics`: nếu carrier_date gần/đúng hạn nhưng customer_date trễ → trách nhiệm logistics. |
 
 Các bước phân tích ở mục 8.1 (TOPIC_DOMAINS, TOPIC_HYPOTHESIS) được thiết kế
-theo đúng các đặc trưng trên. Khi task kế tiếp triển khai agents, ánh xạ tool
-→ field dữ liệu nên dựa trên bảng này.
+theo đúng các đặc trưng trên. Specialist hiện giữ envelope MCP nguyên vẹn; phần
+ánh xạ sâu tool → field dữ liệu và policy/verifier là task kế tiếp.

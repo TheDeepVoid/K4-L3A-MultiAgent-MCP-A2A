@@ -1,11 +1,10 @@
 from __future__ import annotations
 
+import asyncio
 from dataclasses import dataclass, field
 from typing import Any
-import asyncio
 
 from .a2a import Actor, AgentMessage
-
 
 TOOL_PERMISSIONS: dict[Actor, frozenset[str]] = {
     "coordinator": frozenset(),
@@ -73,10 +72,7 @@ def check_tool_request(
 
     check_tool_permission(actor, tool_name)
 
-    if tool_name == "get_policy":
-        expected = {"policy_version"}
-    else:
-        expected = {"order_id"}
+    expected = {"policy_version"} if tool_name == "get_policy" else {"order_id"}
 
     if set(arguments) != expected:
         raise ValueError(
