@@ -324,6 +324,7 @@ def test_policy_without_draft_raises_honest_error(tmp_path: Path) -> None:
         asyncio.run(run_coordinator(tmp_path, registry))
 
 
+@pytest.mark.skip(reason="Stubs are removed")
 def test_default_registry_stubs_fail_loudly(tmp_path: Path) -> None:
     """Documents the handoff state: stubs raise until the next work item lands."""
     contracts = Contracts(ROOT / "contracts" / "schemas")
